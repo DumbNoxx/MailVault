@@ -2,9 +2,10 @@
   "name": "backendts",
   "version": "1.5.0",
   "description": "Restructuracion de todo mi backend de mi portfolio a una y mas ordenada estructura",
-  "main": "/dist/app.js",
+  "main": "dist/app.js",
   "scripts": {
-    "test": "nodemon ./dist/app.js"
+    "dev": "nodemon ./dist/app.js",
+    "build": "tsc && npx vercel --prod"
   },
   "repository": {
     "type": "git",
