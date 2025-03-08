@@ -1,0 +1,27 @@
+{
+  "name": "backendts",
+  "version": "1.5.0",
+  "description": "Restructuracion de todo mi backend de mi portfolio a una y mas ordenada estructura",
+  "main": "/dist/app.js",
+  "scripts": {
+    "test": "nodemon ./dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/DumbNoxx/backendTS.git"
+  },
+  "keywords": [
+    "typescript",
+    "backend",
+    "api"
+  ],
+  "author": "Dylan Marcano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DumbNoxx/backendTS/issues"
+  },
+  "homepage": "https://github.com/DumbNoxx/backendTS#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
