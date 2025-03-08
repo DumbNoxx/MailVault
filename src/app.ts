@@ -5,6 +5,7 @@ const app: express.Application = express();
 type Port = number | string;
 
 
+
 // Rutas
 import routerAPI from './routes/routerAPI';
 app.use('/api', routerAPI);
