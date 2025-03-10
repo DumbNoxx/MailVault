@@ -133,3 +133,4 @@ dist
 .pnp.*
 
 .vercel
+.env*.local
