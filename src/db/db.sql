@@ -1,0 +1,8 @@
+CREATE DATABASE IF NOT EXISTS emails;
+
+USE emails;
+
+CREATE TABLE IF NOT EXISTS interest_contact (
+  id INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+  contact_email VARCHAR(100) NOT NULL
+);

@@ -4,8 +4,8 @@
   "description": "Restructuracion de todo mi backend de mi portfolio a una y mas ordenada estructura",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "nodemon ./dist/app.js",
-    "build": "tsc && npx vercel --prod"
+    "dev": "cpx 'src/**/*.sql' dist --watch & nodemon ./dist/app.js ",
+    "build": "tsc && cpx 'src/**/*.sql' dist && npx vercel --prod "
   },
   "repository": {
     "type": "git",
@@ -26,11 +26,13 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",
+    "mysql2": "^3.13.0",
     "resend": "^4.1.2"
   },
   "devDependencies": {
     "@types/connect": "^3.4.38",
     "@types/express": "^5.0.0",
-    "@types/node": "^22.13.10"
+    "@types/node": "^22.13.10",
+    "cpx": "^1.5.0"
   }
 }
