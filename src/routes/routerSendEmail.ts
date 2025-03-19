@@ -22,7 +22,7 @@ routerSendEmail.get(
   async (req: Request, res: Response) => {
     const name: string = "Dylan";
     const lastName: string = "Marcano";
-    const email: string = "Nuevo Correo";
+    const email: string = "Nuevo Correos";
     const enterprice: string = "";
     const adminEmail: string | undefined = process.env.ADMINEMAIL;
 
