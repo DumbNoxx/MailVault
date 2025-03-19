@@ -4,7 +4,7 @@
   "description": "Restructuracion de todo mi backend de mi portfolio a una y mas ordenada estructura",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "cpx 'src/**/*.sql' dist --watch & nodemon ./dist/app.js ",
+    "dev": "cpx 'src/**/*.sql' dist --watch & nodemon ./dist/app.js & tsc -w ",
     "build": "tsc && cpx 'src/**/*.sql' dist && npx vercel --prod "
   },
   "repository": {

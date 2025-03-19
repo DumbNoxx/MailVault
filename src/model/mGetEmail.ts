@@ -7,9 +7,11 @@ const GetEmail = {
       const query2 = "SELECT contact_email FROM interest_contact";
       const [rows] = await db.execute<ContactEmail[]>(query2);
       const emails = rows.map(rows => rows.contact_email);
-      let list = [];
+      let list = []; 
       for (let i:number = 0; i < emails.length; i++) {
         list[i] = emails[i];
+        const saveQuery = `INSERT INTO contacts (email) VALUES ('${list[i]}')`;
+        db.execute<ContactEmail[]>(saveQuery);
         console.log(`Email numero ${i} es: ${list[i]}`);
       }
     } catch (err) {
