@@ -22,6 +22,7 @@ routerSendEmail.get(
   "/",
   emailRateLimit,
   async (req: Request, res: Response) => {
+    // Estructura general para el formulario
     const name: string = "Dylan";
     const lastName: string = "Marcano";
     const email: string = "";
