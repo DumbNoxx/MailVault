@@ -89,7 +89,7 @@ Go to the original repository and open a pull request with a detailed descriptio
 - Ensure all contributions are thoroughly **documented** and tested.
 - Respect the project's **code of conduct**.
 
-If  you have any questions or need help getting started, feel free to open an issue or reach out. We're excited to collaborate with you.
+If  you have any questions or need help getting started, feel free to open an issue or reach out. I'm excited to collaborate with you.
 
 
 ## Licence
