@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 const app: express.Application = express();
 
+// Importacion del tipo para el puerto
 import { Port } from "./types/Port.type";
 
 
@@ -26,6 +27,7 @@ import Connetion from './model/mConnection';
 
 const PORT: Port = process.env.PORT  || 3000;
 
+// Connection DB  and server Running
 app.listen(PORT, () => {
     Connetion.testConnection();
     console.log(`Server is running in http://localhost:${PORT}`);

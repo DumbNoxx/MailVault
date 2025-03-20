@@ -4,6 +4,8 @@ dotenv.config();
 import express, { Request, Response } from "express";
 const routerSendEmail: express.Router = express.Router();
 
+// Genera el limite de usos para la api que puede tener un usuario
+
 import rateLimit from "express-rate-limit";
 const emailRateLimit = rateLimit({
   windowMs: 1 * 60 * 1000,
@@ -22,7 +24,7 @@ routerSendEmail.get(
   async (req: Request, res: Response) => {
     const name: string = "Dylan";
     const lastName: string = "Marcano";
-    const email: string = "Yohel";
+    const email: string = "";
     const enterprice: string = "";
     const adminEmail: string | undefined = process.env.ADMINEMAIL;
 
