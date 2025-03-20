@@ -7,6 +7,7 @@ const routerSendEmal: express.Router = express.Router();
 
 routerSendEmal.get("/", (req: Request, res: Response) => {
   SendEmail.sendEmail();
+  res.redirect('/api');
 });
 
 
