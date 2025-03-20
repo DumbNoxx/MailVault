@@ -4,7 +4,6 @@ const app: express.Application = express();
 import { Port } from "./types/Port.type";
 
 
-
 // Rutas
 import routerAPI from './routes/routerAPI';
 app.use('/api', routerAPI);
