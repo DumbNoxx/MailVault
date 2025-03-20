@@ -8,8 +8,8 @@ const routerSendEmail: express.Router = express.Router();
 
 import rateLimit from "express-rate-limit";
 const emailRateLimit = rateLimit({
-  windowMs: 1 * 60 * 1000,
-  max: 2,
+  windowMs: 24 * 60 * 60 * 1000, // 24 hours
+  max: 2, // IP request per day
   message: "Yo have reached the limit of requests. Try later.",
 });
 
@@ -19,14 +19,21 @@ const resend: Resend = new Resend(process.env.RESEND_API_KEY);
 
 import mEmail from "../model/mEmail";
 
-routerSendEmail.get(
+routerSendEmail.post(
   "/",
   emailRateLimit,
   async (req: Request, res: Response) => {
     // General structure for the form
-    const name: string = "Dylan";
-    const email: string = "";
-    const enterprice: string = "";
+    const {
+      name,
+      email,
+      enterprice,
+    }: {
+      name: string;
+      email: string;
+      enterprice?: string;
+    } = req.body;
+
     const adminEmail: string | undefined = process.env.ADMINEMAIL;
 
     // Function to saves the email
@@ -51,7 +58,15 @@ routerSendEmail.get(
         from: "CAPTION <onboarding@resend.dev>",
         to: adminEmail,
         subject: "A customer wants to contact you.",
-        text: `Hello. I'm ${name} and i would like to know more about your services. This is my email: ${email}`,
+        text: `Hello. I'm ${name} and i would like to know more about your services.
+         This is my email: ${email}.
+         Enterpirce: ${
+           enterprice
+             ? `I work in the company:' ${enterprice}`
+             : "Not specified"
+         }
+         
+         I hope to hear from you soon!`,
       };
       // console.log("Sending email with the following parameters: ", params); //Debugging
       // console.log("API Key:", process.env.RESEND_API_KEY); //Debugging
