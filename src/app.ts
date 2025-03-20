@@ -1,8 +1,7 @@
 import express, { Request, Response } from 'express';
 const app: express.Application = express();
 
-// Tipo para el puerto
-type Port = number | string;
+import { Port } from "./types/Port.type";
 
 
 
@@ -16,6 +15,8 @@ app.use('/api/send-email', routerSendEmail);
 import routerGetEmail from './routes/getEmail';
 app.use('/api/get-email', routerGetEmail);
 
+import routerSendEmal from './routes/routerSendEmailPublice';
+app.use("/api/send-publice", routerSendEmal);
 
 app.get('/', (req: Request, res: Response) => {
     res.send("Hola mundo!!!!");

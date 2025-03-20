@@ -1,5 +1,5 @@
 import db from "../db/db";
-import ContactEmail from "../interface/InferfaceContact";
+import ContactEmail from "../interfaces/Contact.interface";
 
 const GetEmail = {
   async getEmail() {
@@ -15,7 +15,8 @@ const GetEmail = {
 
         if (existingEmail.length === 0) {
           const saveQuery = `INSERT INTO contacts (email) VALUES ('${list[i]}')`;
-          await db.execute<ContactEmail[]>(saveQuery);
+          const emails = await db.execute<ContactEmail[]>(saveQuery);
+          return emails;
         } else {
           console.log("El correo ya existe");
         }

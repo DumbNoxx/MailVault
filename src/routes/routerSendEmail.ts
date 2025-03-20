@@ -22,7 +22,7 @@ routerSendEmail.get(
   async (req: Request, res: Response) => {
     const name: string = "Dylan";
     const lastName: string = "Marcano";
-    const email: string = "Nuevo Correos";
+    const email: string = "Yohel";
     const enterprice: string = "";
     const adminEmail: string | undefined = process.env.ADMINEMAIL;
 
@@ -32,7 +32,7 @@ routerSendEmail.get(
       } catch (err) {
         console.log(`Hubo un error al guardar el email: ${err}`);
       }
-    }
+    };
 
     try {
       if (!adminEmail) {
