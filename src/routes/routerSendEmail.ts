@@ -4,7 +4,7 @@ dotenv.config();
 import express, { Request, Response } from "express";
 const routerSendEmail: express.Router = express.Router();
 
-// Genera el limite de usos para la api que puede tener un usuario
+// Generates the limit of users of the API that the user can have.
 
 import rateLimit from "express-rate-limit";
 const emailRateLimit = rateLimit({
@@ -13,6 +13,7 @@ const emailRateLimit = rateLimit({
   message: "Haz alcanzado el limite diario de solicitudes. Intenta mas tarde.",
 });
 
+// Use resend's own API in https://resend.com 
 import { Resend } from "resend";
 const resend: Resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -22,13 +23,14 @@ routerSendEmail.get(
   "/",
   emailRateLimit,
   async (req: Request, res: Response) => {
-    // Estructura general para el formulario
+    // General structure for the form
     const name: string = "Dylan";
     const lastName: string = "Marcano";
     const email: string = "";
     const enterprice: string = "";
     const adminEmail: string | undefined = process.env.ADMINEMAIL;
 
+    // Function to saves the email
     const main = async () => {
       try {
         await mEmail.saveEmail(email);
@@ -37,13 +39,15 @@ routerSendEmail.get(
       }
     };
 
+    // Handle the error of not defining the enviroment varible ADMINEMAIL
     try {
       if (!adminEmail) {
         throw new Error(
-          "Admin email is not defined in the environment variables"
+          "ADMINEMAIL is not defined in the environment variables"
         );
       }
 
+      // Parameters for sending the email to the Admin
       const params = {
         from: "CAPTION <onboarding@resend.dev>",
         to: adminEmail,
@@ -53,7 +57,7 @@ routerSendEmail.get(
       console.log("Enviando email con los siguientes parámetros:", params);
       console.log("API Key:", process.env.RESEND_API_KEY);
       const response = await resend.emails.send(params);
-      main();
+      main(); 
       res.send("Email Enviado");
     } catch (err) {
       console.log(err);

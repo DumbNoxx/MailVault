@@ -2,7 +2,7 @@ import db from "../db/db";
 import ContactEmail from "../interfaces/Contact.interface";
 
 
-// Obtiene el email que es escrito en el formulario
+// Get the email od the form, in the database, to save it to a copy of the database.
 
 const GetEmail = {
   async getEmail() {

@@ -4,6 +4,10 @@ import path from "path";
 import dotenv from "dotenv";
 dotenv.config();
 
+/**
+ * Use your data such as the user of your database 
+ * and password, also the host
+ */
 const pool: mysql.Pool = mysql.createPool({
   host: "localhost",
   user: process.env.DB_USER,
@@ -13,6 +17,8 @@ const pool: mysql.Pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
 });
+
+// Initialize the database
 
 const initializeDatabase = async () => {
   try {

@@ -1,7 +1,10 @@
 import db from "../db/db";
 import ContactEmail from "../interfaces/Contact.interface";
 
-// Envia el email para la publicidad
+/**
+ * Use only if the website requires advertising to the suscribers of the
+ * page to generate constant activity in the audience.
+ */
 const SendEmail = {
   async sendEmail() {
     try {

@@ -1,7 +1,8 @@
 import db from "../db/db";
 
 
-// Guarda el email en la base de datos
+// Save the email in the database
+
 const mEmail = {
   async saveEmail(email: string) {
     try {

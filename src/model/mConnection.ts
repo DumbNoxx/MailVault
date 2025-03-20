@@ -1,7 +1,7 @@
 import db from "../db/db";
 
 
-// Hace la conexion a la base de datos
+// Connection to the Database
 
 const Connetion = {
   async testConnection() {
