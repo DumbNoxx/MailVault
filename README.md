@@ -1,6 +1,4 @@
-# MailVaultAPI
-
-  
+# MailVault
 
 Is a robust solution designed to efficiently manage communications. Its main functionality includes sending email notifications to the administrator and securely storing email addresses in the database. Additionally, the API is optimized for marketing campaigns, facilitating the distribution of segmented and personalized advertisements, enhancing user engagement, and maximizing the reach of advertising strategies **(Not implemented yet)**. Developed using TypeScript and Express, it combines clean code, strong typing, and a scalable architecture to ensure reliable and adaptable performance.
 
@@ -29,8 +27,8 @@ Is a robust solution designed to efficiently manage communications. Its main fun
 ### 1. Clone the repository
 
 ```bash
-git clone git@github.com:DumbNoxx/MailVaultAPI.git
-cd MailVaultAPI
+git clone git@github.com:DumbNoxx/MailVault.git
+cd MailVault
 ```
 
   
@@ -57,7 +55,7 @@ npm run build
 ```
 
 ## Contributing
-We welcome contributions to MailVaultAPI! 
+We welcome contributions to MailVault! 
 
 Whether you're fixing bugs, adding new feactures, or improving documentation, your help is greatly appreciated. Here's how you can get started.
 

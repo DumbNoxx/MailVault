@@ -1,7 +1,7 @@
 {
-  "name": "backendts",
+  "name": "MailVault",
   "version": "1.5.0",
-  "description": "Restructuracion de todo mi backend de mi portfolio a una y mas ordenada estructura",
+  "description": "Efficent email management tool with secure storage, notifications, marketing feactures.",
   "main": "dist/app.js",
   "scripts": {
     "dev": "cpx 'src/**/*.sql' dist --watch & nodemon ./dist/app.js & tsc -w ",
