@@ -1,5 +1,5 @@
 import db from "../db/db";
-import ContactEmail from "../interfaces/Contact.interface";
+import ContactEmail from "../interfaces/contact.interface";
 
 /**
  * Use only if the website requires advertising to the suscribers of the
@@ -16,7 +16,7 @@ const SendEmail = {
     } catch (err) {
       console.log(`Error to send Email: ${err}`);
     }
-  }
-}
+  },
+};
 
 export default SendEmail;

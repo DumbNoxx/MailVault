@@ -1,11 +1,10 @@
 import express, { Request, Response } from 'express';
 const app: express.Application = express();
 
-// Importacion del tipo para el puerto
-import { Port } from "./types/Port.type";
+// Import type for port
+import { Port } from "./types/port.type";
 
-
-// Rutas
+// Routes
 import routerAPI from './routes/routerAPI';
 app.use('/api', routerAPI);
 
@@ -18,6 +17,8 @@ app.use('/api/get-email', routerGetEmail);
 import routerSendEmal from './routes/routerSendEmailPublice';
 app.use("/api/send-publice", routerSendEmal);
 
+
+// Principal Endpoint
 app.get('/', (req: Request, res: Response) => {
     res.send("Hola mundo!!!!");
 });
@@ -29,6 +30,6 @@ const PORT: Port = process.env.PORT  || 3000;
 
 // Connection DB  and server Running
 app.listen(PORT, () => {
-    Connetion.testConnection();
+    Connetion.testConnection(); // Test connection to Database
     console.log(`Server is running in http://localhost:${PORT}`);
 });

@@ -1,9 +1,7 @@
 import db from "../db/db";
-import ContactEmail from "../interfaces/Contact.interface";
-
+import ContactEmail from "../interfaces/contact.interface";
 
 // Get the email od the form, in the database, to save it to a copy of the database.
-
 const GetEmail = {
   async getEmail() {
     try {
@@ -21,11 +19,11 @@ const GetEmail = {
           const emails = await db.execute<ContactEmail[]>(saveQuery);
           return emails;
         } else {
-          console.log("El correo ya existe");
+          console.log("The mail already exists.");
         }
       }
     } catch (err) {
-      console.log(`Error al obtener los emails: ${err}`);
+      console.log(`Error when getting the emails: ${err}`);
     }
   },
 };

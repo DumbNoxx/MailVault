@@ -3,7 +3,7 @@ const routerAPI: express.Router = express.Router();
 
 
 routerAPI.get('/', (req: Request, res: Response ) => {
-    res.send("Saludo desde la ruta /api");
+    res.send("Greetings from the endpoint /api");
 });
 
 

@@ -10,10 +10,10 @@ import rateLimit from "express-rate-limit";
 const emailRateLimit = rateLimit({
   windowMs: 1 * 60 * 1000,
   max: 2,
-  message: "Haz alcanzado el limite diario de solicitudes. Intenta mas tarde.",
+  message: "Yo have reached the limit of requests. Try later.",
 });
 
-// Use resend's own API in https://resend.com 
+// Use resend's own API in https://resend.com
 import { Resend } from "resend";
 const resend: Resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -25,7 +25,6 @@ routerSendEmail.get(
   async (req: Request, res: Response) => {
     // General structure for the form
     const name: string = "Dylan";
-    const lastName: string = "Marcano";
     const email: string = "";
     const enterprice: string = "";
     const adminEmail: string | undefined = process.env.ADMINEMAIL;
@@ -35,7 +34,7 @@ routerSendEmail.get(
       try {
         await mEmail.saveEmail(email);
       } catch (err) {
-        console.log(`Hubo un error al guardar el email: ${err}`);
+        console.log(`There was an error saving the email: ${err}`);
       }
     };
 
@@ -51,17 +50,17 @@ routerSendEmail.get(
       const params = {
         from: "CAPTION <onboarding@resend.dev>",
         to: adminEmail,
-        subject: "Nuevo Cliente quiere contactarte",
-        text: `Hola, soy ${name} ${lastName} y me gustaría saber más sobre sus servicios. Este es mi email ${email}`,
+        subject: "A customer wants to contact you.",
+        text: `Hello. I'm ${name} and i would like to know more about your services. This is my email: ${email}`,
       };
-      console.log("Enviando email con los siguientes parámetros:", params);
-      console.log("API Key:", process.env.RESEND_API_KEY);
+      // console.log("Sending email with the following parameters: ", params); //Debugging
+      // console.log("API Key:", process.env.RESEND_API_KEY); //Debugging
       const response = await resend.emails.send(params);
-      main(); 
-      res.send("Email Enviado");
+      main();
+      res.send("Email sent");
     } catch (err) {
       console.log(err);
-      res.status(500).send("Error al enviar el email");
+      res.status(500).send("Error the sending the email.");
     }
   }
 );

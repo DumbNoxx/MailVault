@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 /**
- * Use your data such as the user of your database 
+ * Use your data such as the user of your database
  * and password, also the host
  */
 const pool: mysql.Pool = mysql.createPool({
@@ -24,19 +24,20 @@ const initializeDatabase = async () => {
   try {
     const sqFilePath = path.join(__dirname, "db.sql");
     const sqFileContent = fs.readFileSync(sqFilePath, "utf-8");
-    // console.log("Contenido del archivo SQL:", sqFileContent); // Depuración
+    // console.log("Content of file SQL:", sqFileContent); // debugging
     const connection = await pool.getConnection();
-    const queries = sqFileContent.split(";")
-    .map(query => query.trim())
-    .filter(query => query !== "");
+    const queries = sqFileContent
+      .split(";")
+      .map((query) => query.trim())
+      .filter((query) => query !== "");
     for (const query of queries) {
-      // console.log("Ejecutando consulta:", query); 
+      // console.log("Performing conultation:", query); //Debugging
       await connection.query(query);
     }
-    // console.log("Base de datos creadas correctamente");
+    // console.log("Database successfully created"); //Debugging
     connection.release();
   } catch (err) {
-    console.log(`Error al crear la base de datos: ${err}`);
+    console.log(`Error creating database: ${err}`);
   }
 };
 
