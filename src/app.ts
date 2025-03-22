@@ -44,7 +44,6 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 import Connetion from './model/mConnection';
-import path from 'path';
 
 
 const PORT: Port = process.env.PORT  || 3000;
