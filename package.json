@@ -4,8 +4,8 @@
   "description": "Efficent email management tool with secure storage, notifications, marketing feactures.",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "cpx 'src/**/*.sql' dist --watch & nodemon ./dist/app.js & tsc -w ",
-    "build": "tsc && cpx 'src/**/*.sql' dist && npx vercel --prod "
+    "dev": "nodemon ./dist/app.js & tsc -w ",
+    "build": "tsc && npx vercel --prod "
   },
   "repository": {
     "type": "git",
