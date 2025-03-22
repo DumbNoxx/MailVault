@@ -28,11 +28,11 @@ app.use('/api', routerAPI);
 import routerSendEmail from './routes/routerSendEmail';
 app.use('/api/send-email', routerSendEmail);
 
-import routerGetEmail from './routes/getEmail';
-app.use('/api/get-email', routerGetEmail);
+// import routerGetEmail from './routes/getEmail';
+// app.use('/api/get-email', routerGetEmail);
 
-import routerSendEmal from './routes/routerSendEmailPublice';
-app.use("/api/send-publice", routerSendEmal);
+// import routerSendEmal from './routes/routerSendEmailPublice';
+// app.use("/api/send-publice", routerSendEmal);
 
 
 // Principal Endpoint
