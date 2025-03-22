@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 const app: express.Application = express();
 import cors  from 'cors';
 
@@ -28,8 +28,8 @@ app.use('/api', routerAPI);
 import routerSendEmail from './routes/routerSendEmail';
 app.use('/api/send-email', routerSendEmail);
 
-// import routerGetEmail from './routes/getEmail';
-// app.use('/api/get-email', routerGetEmail);
+import routerGetEmail from './routes/getEmail';
+app.use('/api/get-email', routerGetEmail);
 
 // import routerSendEmal from './routes/routerSendEmailPublice';
 // app.use("/api/send-publice", routerSendEmal);
