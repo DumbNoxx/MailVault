@@ -19,9 +19,9 @@
   "author": "Dylan Marcano",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DumbNoxx/backendTS/issues"
+    "url": "https://github.com/DumbNoxx/mailvault/issues"
   },
-  "homepage": "https://github.com/DumbNoxx/backendTS#readme",
+  "homepage": "https://github.com/DumbNoxx/mailvault#readme",
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",
     "cors": "^2.8.5",
