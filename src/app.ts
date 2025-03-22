@@ -12,6 +12,8 @@ import { Port } from "./types/port.type";
 // Middleware
 app.set('trust proxy', 1);
 
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(cors({
     origin: process.env.FRONT, //Call your frontend
     methods: ['GET', 'POST'], 
