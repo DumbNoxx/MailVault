@@ -1,6 +1,6 @@
 {
-  "name": "MailVault",
-  "version": "1.5.0",
+  "name": "mailvault",
+  "version": "1.6.0",
   "description": "Efficent email management tool with secure storage, notifications, marketing feactures.",
   "main": "dist/app.js",
   "scripts": {
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/DumbNoxx/backendTS#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",
@@ -31,8 +32,10 @@
   },
   "devDependencies": {
     "@types/connect": "^3.4.38",
-    "@types/express": "^5.0.0",
-    "@types/node": "^22.13.10",
-    "cpx": "^1.5.0"
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.11",
+    "cpx": "^1.5.0",
+    "typescript": "^5.8.2"
   }
 }
