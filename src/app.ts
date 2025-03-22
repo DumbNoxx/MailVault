@@ -10,7 +10,7 @@ dotenv.config()
 import { Port } from "./types/port.type";
 
 // Middleware
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 app.use(cors({
     origin: process.env.FRONT, //Call your frontend
