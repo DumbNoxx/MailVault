@@ -1,17 +1,23 @@
-import db from "../db/db";
-
+import supabase from "../db/supabase";
 // Connection to the Database
 
-const Connetion = {
+const Connection = {
   async testConnection() {
     try {
-      const connetion = await db.getConnection();
-      console.log("Successful connection to the database.");
-      connetion.release();
+      const { data, error } = await supabase
+        .from('interest_contact') 
+        .select('*')
+        .limit(1);
+
+      if (error) {
+        throw error;
+      }
+
+      console.log("Successful connection to Supabase.");
     } catch (err) {
-      console.log(`Error connecting to the database: ${err}`);
+      console.log(`Error connecting to Supabase: ${err}`);
     }
   },
 };
 
-export default Connetion;
+export default Connection;
