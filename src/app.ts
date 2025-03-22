@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 const app: express.Application = express();
 import cors  from 'cors';
+import path from 'path';
 
 import  dotenv  from 'dotenv';
 dotenv.config()
@@ -43,6 +44,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 import Connetion from './model/mConnection';
+import path from 'path';
 
 
 const PORT: Port = process.env.PORT  || 3000;
