@@ -74,8 +74,8 @@ I hope to hear from you soon!`,
       // console.log("Sending email with the following parameters: ", params); //Debugging
       // console.log("API Key:", process.env.RESEND_API_KEY); //Debugging
       const response = await resend.emails.send(params);
-      if (checkbutton) {
-        main();
+      if (checkbutton === true) {
+        await main();
       }
       res.send("Email sent");
     } catch (err) {
