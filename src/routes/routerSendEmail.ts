@@ -28,10 +28,14 @@ routerSendEmail.post(
       name,
       email,
       enterprice,
+      message,
+      checkbox,
     }: {
       name: string;
       email: string;
       enterprice?: string;
+      message?: string;
+      checkbox?: boolean;
     } = req.body;
 
     const adminEmail: string | undefined = process.env.ADMINEMAIL;
@@ -59,19 +63,22 @@ routerSendEmail.post(
         to: adminEmail,
         subject: "A customer wants to contact you.",
         text: `Hello. I'm ${name} and i would like to know more about your services.
-         This is my email: ${email}.
-         Enterpirce: ${
+This is my email: ${email}.
+Enterpirce: ${
            enterprice
              ? `I work in the company:' ${enterprice}`
              : "Not specified"
          }
+         message: ${message}
          
          I hope to hear from you soon!`,
       };
       // console.log("Sending email with the following parameters: ", params); //Debugging
       // console.log("API Key:", process.env.RESEND_API_KEY); //Debugging
       const response = await resend.emails.send(params);
-      main();
+      if (checkbox) {
+        main();
+      }
       res.send("Email sent");
     } catch (err) {
       console.log(err);
