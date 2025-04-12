@@ -4,8 +4,8 @@
   "description": "Efficent email management tool with secure storage, notifications, marketing feactures.",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "nodemon ./dist/app.js & tsc -w ",
-    "build": "tsc && npx vercel --prod "
+    "dev": "concurrently \"tsc -w\" \"nodemon dist/app.js\" \"tsc-alias -w\"",
+    "build": "tsc && npx tsc-alias && npx vercel --prod "
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,9 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.11",
-    "cpx": "^1.5.0",
+    "concurrently": "^9.1.2",
+    "cpy": "^11.1.0",
+    "tsc-alias": "^1.8.15",
     "typescript": "^5.8.2"
   }
 }
