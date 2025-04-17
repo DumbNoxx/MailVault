@@ -1,21 +1,39 @@
-import supabase from "../db/supabase";
-import ContactEmail from "../interfaces/contact.interface";
+import { supabase } from "@db";
+import { ContactEmail } from "@interfaces";
 
-// Save the email in the database
+/**
+ * Model for handling email-related database operations.
+ */
 const mEmail = {
-  async saveEmail(email: string) {
+  /**
+   * Saves an email address in the "interest_contact" table of the database.
+   *
+   * @param {string} email - The email address to be saved.
+   * @returns {Promise<void>} A promise that resolves when the operation is complete.
+   * @throws {Error} Throws an error if the database operation fails.
+   *
+   * @example
+   * ```typescript
+   * try {
+   *   const result = await mEmail.saveEmail("example@example.com");
+   *   console.log("Email saved:", result);
+   * } catch (error) {
+   *   console.error("Error saving the email:", error);
+   * }
+   * ```
+   */
+  async saveEmail(email: string): Promise<void> {
     try {
-      const { data, error } = await supabase
+      const contact: ContactEmail = { contact_email: email }; // Use the interface to type the object
+      const { error } = await supabase
         .from("interest_contact")
-        .insert([{ contact_email: email }]);
+        .insert([contact]);
 
       if (error) {
         throw error;
       }
-
-      return data;
     } catch (err) {
-      console.log("Error al guardar el email:", email, err);
+      console.log("Error saving the email:", email, err);
       throw err;
     }
   },

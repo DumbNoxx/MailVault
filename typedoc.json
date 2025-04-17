@@ -1,0 +1,13 @@
+{
+  "entryPoints": ["src"],
+  "out": "docs",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "hideGenerator": true,
+  "tsconfig": "tsconfig.json",
+  "entryPointStrategy": "expand",
+  "exclude": ["src/env.d.ts"]
+}

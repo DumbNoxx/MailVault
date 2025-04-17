@@ -1,1 +1,2 @@
-export * from "./contact.interface";
+export { default as ContactEmail } from "./contact.interface";
+export { BodyReq } from "./body.interface";

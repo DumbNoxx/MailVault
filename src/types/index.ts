@@ -1,1 +1,1 @@
-export * from "./port.type";
+export type { Port } from "./port.type";

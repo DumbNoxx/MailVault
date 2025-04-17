@@ -1,47 +1,45 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 import express, { Request, Response } from "express";
+import rateLimit from "express-rate-limit";
+import { Resend } from "resend";
+import { ENV } from "@env";
+import { mEmail } from "@model";
+import { BodyReq } from "@interfaces";
+
 const routerSendEmail: express.Router = express.Router();
 
-// Generates the limit of users of the API that the user can have.
-
-import rateLimit from "express-rate-limit";
+// Rate limiter middleware to restrict the number of requests per IP.
 const emailRateLimit = rateLimit({
   windowMs: 24 * 60 * 60 * 1000, // 24 hours
-  max: 2, // IP request per day
-  message: "Yo have reached the limit of requests. Try later.",
+  max: 2, // Requests per IP per day
+  message: "You have reached the limit of requests. Try later.",
 });
 
-// Use resend's own API in https://resend.com
-import { Resend } from "resend";
-const resend: Resend = new Resend(process.env.RESEND_API_KEY);
+const resend: Resend = new Resend(ENV.PRIVATE.RESEND);
 
-import mEmail from "../model/mEmail";
-
+/**
+ * POST route to handle email sending requests.
+ *
+ * @route POST /
+ * @param {Request} req - Express request object containing the email data in the body.
+ * @param {Response} res - Express response object to send the result of the operation.
+ * @returns {void}
+ * @throws {Error} If an error occurs while sending the email or saving it.
+ */
 routerSendEmail.post(
   "/",
   emailRateLimit,
   async (req: Request, res: Response) => {
     // General structure for the form
-    const {
-      name,
-      email,
-      enterprice,
-      message,
-      checkbutton,
-    }: {
-      name: string;
-      email: string;
-      enterprice?: string;
-      message?: string;
-      checkbutton?: boolean;
-    } = req.body;
+    const { name, email, enterprice, message, checkbutton }: BodyReq = req.body;
+    const adminEmail: string = ENV.PRIVATE.ADMIN;
 
-    const adminEmail: string | undefined = process.env.ADMINEMAIL;
-
-    // Function to saves the email
-    const main = async () => {
+    /**
+     * Saves the email to the database.
+     * Logs an error if the operation fails.
+     *
+     * @returns {Promise<void>}
+     */
+    const main = async (): Promise<void> => {
       try {
         await mEmail.saveEmail(email);
       } catch (err) {
@@ -49,7 +47,7 @@ routerSendEmail.post(
       }
     };
 
-    // Handle the error of not defining the enviroment varible ADMINEMAIL
+    // Handle the error of not defining the environment variable ADMINEMAIL
     try {
       if (!adminEmail) {
         throw new Error(
@@ -57,30 +55,44 @@ routerSendEmail.post(
         );
       }
 
-      // Parameters for sending the email to the Admin
+      /**
+       * Parameters for sending the email to the admin.
+       * Includes sender's name, email, optional enterprise, and message.
+       *
+       * @type {Object}
+       * @property {string} from - Sender's address.
+       * @property {string} to - Recipient's address.
+       * @property {string} subject - Email subject.
+       * @property {string} text - Email content.
+       */
       const params = {
         from: "CAPTION <onboarding@resend.dev>",
         to: adminEmail,
         subject: "A customer wants to contact you.",
-        text: `Hello. I'm ${name} and i would like to know more about your services.
+        text: `Hello. I'm ${name} and I would like to know more about your services.
 This is my email: ${email}.
-Enterpirce: ${
-          enterprice ? `I work in the company:' ${enterprice}` : "Not specified"
+Enterprise: ${
+          enterprice
+            ? `I work in the company: '${enterprice}'`
+            : "Not specified"
         }
-message: ${message}
+Message: ${message}
          
 I hope to hear from you soon!`,
       };
-      // console.log("Sending email with the following parameters: ", params); //Debugging
-      // console.log("API Key:", process.env.RESEND_API_KEY); //Debugging
-      const response = await resend.emails.send(params);
+
+      // Sends the email using Resend API
+      await resend.emails.send(params);
+
+      // Saves the email if the checkbutton is true
       if (checkbutton === true) {
         await main();
       }
+
       res.send("Email sent");
     } catch (err) {
       console.log(err);
-      res.status(500).send("Error the sending the email.");
+      res.status(500).send("Error sending the email.");
     }
   }
 );
