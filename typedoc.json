@@ -9,5 +9,6 @@
   "hideGenerator": true,
   "tsconfig": "tsconfig.json",
   "entryPointStrategy": "expand",
-  "exclude": ["src/env.d.ts"]
+  "exclude": ["src/env.d.ts"],
+  "gitRevision": "main"
 }
